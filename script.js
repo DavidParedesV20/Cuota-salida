@@ -27,12 +27,12 @@ function calculate() {
     }
 
     const costoComidaPorPersona = comida / (comenBeben + soloComen);
-    const costoBebidaPorPersona = bebida / (soloBeben);
+    const costoBebidaPorPersona = bebida / (comenBeben + soloBeben);
 
     const resultado = `
         Cada persona que come y bebe debe poner: $${(costoComidaPorPersona + costoBebidaPorPersona).toFixed(2)}.<br>
-        ${soloComen !== comenBeben ? `Cada persona que solo come debe poner: $${costoComidaPorPersona.toFixed(2)}.<br>` : ''}
-        ${soloBeben !== comenBeben ? `Cada persona que solo bebe debe poner: $${costoBebidaPorPersona.toFixed(2)}.` : ''}
+        ${soloComen !== comenBeben ? `Cada persona que solo come debe poner: $${(comida / soloComen).toFixed(2)}.<br>` : ''}
+        ${soloBeben !== comenBeben ? `Cada persona que solo bebe debe poner: $${(bebida / soloBeben).toFixed(2)}.` : ''}
     `;
     document.getElementById('result').innerHTML = resultado;
 }
