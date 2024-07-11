@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>División de Costos de la Reunión</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>División de Costos de la Reunión</h1>
+        <div class="input-group">
+            <label for="comida">Costo de la comida ($): <img src="./icons/1x/Mesa de trabajo 1 copia.png" alt="Comida" class="icon"></label>
+            <input type="number" id="comida" step="0.01" min="0">
+        </div>
+        <div class="input-group">
+            <label for="bebida">Costo de las bebidas ($): <img src="./icons/1x/Mesa de trabajo 1 copia 2.png" alt="Bebida" class="icon"></label>
+            <input type="number" id="bebida" step="0.01" min="0">
+        </div>
+        <div class="input-group">
+            <label for="comenBeben">Número de personas que comen y beben: <img src="./icons/1x/Mesa de trabajo 1 copia.png" alt="Comida" class="icon"> <img src="./icons/1x/Mesa de trabajo 1 copia 2.png" alt="Bebida" class="icon"></label>
+            <input type="number" id="comenBeben" min="0">
+        </div>
+        <div class="input-group">
+            <label for="soloComen">Número de personas que solo comen:</label>
+            <input type="number" id="soloComen" min="0">
+        </div>
+        <div class="input-group">
+            <label for="soloBeben">Número de personas que solo beben:</label>
+            <input type="number" id="soloBeben" min="0">
+        </div>
+        <button onclick="calculate()">Calcular</button>
+        <div id="result"></div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
