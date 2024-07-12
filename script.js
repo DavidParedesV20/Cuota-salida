@@ -10,16 +10,23 @@ function calculate() {
         return;
     }
 
-    const totalComen = comenBeben + soloComen;
-    const totalBeben = comenBeben + soloBeben;
+    let resultado = '';
 
-    const costoComidaPorPersona = comida / totalComen;
-    const costoBebidaPorPersona = bebidas / totalBeben;
+    if (comenBeben > 0) {
+        const costoComidaPorPersona = comida / (comenBeben + soloComen);
+        const costoBebidaPorPersona = bebidas / (comenBeben + soloBeben);
+        resultado += `Cada persona que come y bebe debe poner: $${(costoComidaPorPersona + costoBebidaPorPersona).toFixed(2)}.<br>`;
+    }
 
-    const resultado = `
-        Cada persona que come y bebe debe poner: $${(costoComidaPorPersona + costoBebidaPorPersona).toFixed(2)}.<br>
-        Cada persona que solo come debe poner: $${costoComidaPorPersona.toFixed(2)}.<br>
-        Cada persona que solo bebe debe poner: $${costoBebidaPorPersona.toFixed(2)}.
-    `;
+    if (soloComen > 0) {
+        const costoComidaPorPersona = comida / (comenBeben + soloComen);
+        resultado += `Cada persona que solo come debe poner: $${costoComidaPorPersona.toFixed(2)}.<br>`;
+    }
+
+    if (soloBeben > 0) {
+        const costoBebidaPorPersona = bebidas / (comenBeben + soloBeben);
+        resultado += `Cada persona que solo bebe debe poner: $${costoBebidaPorPersona.toFixed(2)}.<br>`;
+    }
+
     document.getElementById('result').innerHTML = resultado;
 }
