@@ -1,19 +1,25 @@
 function calculate() {
-    const costAlcohol = parseFloat(document.getElementById('costAlcohol').value) || 0;
-    const costFood = parseFloat(document.getElementById('costFood').value) || 0;
-    const numEatDrink = parseInt(document.getElementById('numEatDrink').value) || 0;
-    const numEat = parseInt(document.getElementById('numEat').value) || 0;
-    const numDrink = parseInt(document.getElementById('numDrink').value) || 0;
+    const bebidas = parseFloat(document.getElementById('bebidas').value) || 0;
+    const comida = parseFloat(document.getElementById('comida').value) || 0;
+    const comenBeben = parseInt(document.getElementById('comenBeben').value) || 0;
+    const soloComen = parseInt(document.getElementById('soloComen').value) || 0;
+    const soloBeben = parseInt(document.getElementById('soloBeben').value) || 0;
 
-    const totalNumEat = numEatDrink + numEat;
-    const totalNumDrink = numEatDrink + numDrink;
+    if ((bebidas === 0 && comida === 0) || (comenBeben === 0 && soloComen === 0 && soloBeben === 0)) {
+        document.getElementById('result').innerText = 'Por favor, ingrese todos los campos.';
+        return;
+    }
 
-    let totalEatDrink = numEatDrink > 0 ? (costFood / totalNumEat) + (costAlcohol / totalNumDrink) : 0;
-    let totalEat = totalNumEat > 0 ? costFood / totalNumEat : 0;
-    let totalDrink = totalNumDrink > 0 ? costAlcohol / totalNumDrink : 0;
+    const totalComen = comenBeben + soloComen;
+    const totalBeben = comenBeben + soloBeben;
 
-    document.getElementById('resultText').innerText = 
-        Costo por persona que come y bebe alcohol: $${totalEatDrink.toFixed(2)}\n +
-        Costo por persona que solo come: $${totalEat.toFixed(2)}\n +
-        Costo por persona que solo bebe: $${totalDrink.toFixed(2)};
+    const costoComidaPorPersona = comida / totalComen;
+    const costoBebidaPorPersona = bebidas / totalBeben;
+
+    const resultado = `
+        Cada persona que come y bebe debe poner: $${(costoComidaPorPersona + costoBebidaPorPersona).toFixed(2)}.<br>
+        Cada persona que solo come debe poner: $${costoComidaPorPersona.toFixed(2)}.<br>
+        Cada persona que solo bebe debe poner: $${costoBebidaPorPersona.toFixed(2)}.
+    `;
+    document.getElementById('result').innerHTML = resultado;
 }
