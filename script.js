@@ -1,38 +1,22 @@
 function calculate() {
-    const comida = parseFloat(document.getElementById('comida').value);
-    const bebida = parseFloat(document.getElementById('bebida').value);
-    const comenBeben = parseInt(document.getElementById('comenBeben').value);
-    let soloComen = parseInt(document.getElementById('soloComen').value);
-    let soloBeben = parseInt(document.getElementById('soloBeben').value);
+    const costAlcohol = parseFloat(document.getElementById('costAlcohol').value) || 0;
+    const costFood = parseFloat(document.getElementById('costFood').value) || 0;
+    const numEatDrink = parseInt(document.getElementById('numEatDrink').value) || 0;
+    const numEat = parseInt(document.getElementById('numEat').value) || 0;
+    const numDrink = parseInt(document.getElementById('numDrink').value) || 0;
 
-    if (isNaN(comida) || isNaN(bebida) || isNaN(comenBeben) || isNaN(soloComen) || isNaN(soloBeben)) {
-        document.getElementById('result').innerText = 'Por favor, ingrese todos los campos.';
-        return;
+    let totalEatDrink = numEatDrink > 0 ? (costFood + costAlcohol) / numEatDrink : 0;
+    let totalEat = numEat > 0 ? costFood / numEat : 0;
+    let totalDrink = numDrink > 0 ? costAlcohol / numDrink : 0;
+
+    if (numEatDrink > 0 && numEat > 0 && numDrink > 0) {
+        totalEatDrink = (costFood + costAlcohol) / (numEatDrink + numEat + numDrink);
+        totalEat = costFood / (numEatDrink + numEat);
+        totalDrink = costAlcohol / (numEatDrink + numDrink);
     }
 
-    const totalPersonas = comenBeben + soloComen + soloBeben;
-    if (totalPersonas === 0) {
-        document.getElementById('result').innerText = 'Debe haber al menos una persona en la reunión.';
-        return;
-    }
-
-    // Si soloComen es 0, repartir el costo de la comida entre los que comen y beben
-    if (soloComen === 0) {
-        soloComen = comenBeben;
-    }
-
-    // Si soloBeben es 0, repartir el costo de la bebida entre los que comen y beben
-    if (soloBeben === 0) {
-        soloBeben = comenBeben;
-    }
-
-    const costoComidaPorPersona = comida / (comenBeben + soloComen);
-    const costoBebidaPorPersona = bebida / (comenBeben + soloBeben);
-
-    const resultado = `
-        Cada persona que come y bebe debe poner: $${(costoComidaPorPersona + costoBebidaPorPersona).toFixed(2)}.<br>
-        ${soloComen !== comenBeben ? `Cada persona que solo come debe poner: $${(comida / soloComen).toFixed(2)}.<br>` : ''}
-        ${soloBeben !== comenBeben ? `Cada persona que solo bebe debe poner: $${(bebida / soloBeben).toFixed(2)}.` : ''}
-    `;
-    document.getElementById('result').innerHTML = resultado;
+    document.getElementById('resultText').innerText = 
+        `Costo por persona que come y bebe alcohol: $${totalEatDrink.toFixed(2)}\n` +
+        `Costo por persona que solo come: $${totalEat.toFixed(2)}\n` +
+        `Costo por persona que solo bebe: $${totalDrink.toFixed(2)}`;
 }
