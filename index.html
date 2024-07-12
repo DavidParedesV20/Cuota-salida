@@ -1,37 +1,39 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>División de Costos de la Reunión</title>
+    <title>Calculadora de Costos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>División de Costos de la Reunión</h1>
+        <h1>Calculadora de Costos</h1>
         <div class="input-group">
-            <label for="comida">Costo de la comida ($): <img src="./icons/1x/Mesa de trabajo 1 copia.png" alt="Comida" class="icon"></label>
-            <input type="number" id="comida" step="0.01" min="0">
+            <label for="costAlcohol">Costo del Alcohol:</label>
+            <input type="number" id="costAlcohol" placeholder="Ingrese el costo del alcohol">
         </div>
         <div class="input-group">
-            <label for="bebida">Costo de las bebidas ($): <img src="./icons/1x/Mesa de trabajo 1 copia 2.png" alt="Bebida" class="icon"></label>
-            <input type="number" id="bebida" step="0.01" min="0">
+            <label for="costFood">Costo de la Comida:</label>
+            <input type="number" id="costFood" placeholder="Ingrese el costo de la comida">
         </div>
         <div class="input-group">
-            <label for="comenBeben">Número de personas que comen y beben: <img src="./icons/1x/Mesa de trabajo 1 copia.png" alt="Comida" class="icon"> <img src="./icons/1x/Mesa de trabajo 1 copia 2.png" alt="Bebida" class="icon"></label>
-            <input type="number" id="comenBeben" min="0">
+            <label for="numEatDrink">Cantidad de gente que come y bebe alcohol:</label>
+            <input type="number" id="numEatDrink" placeholder="Ingrese la cantidad">
         </div>
         <div class="input-group">
-            <label for="soloComen">Número de personas que solo comen:</label>
-            <input type="number" id="soloComen" min="0">
+            <label for="numEat">Cantidad de gente que solo come:</label>
+            <input type="number" id="numEat" placeholder="Ingrese la cantidad">
         </div>
         <div class="input-group">
-            <label for="soloBeben">Número de personas que solo beben:</label>
-            <input type="number" id="soloBeben" min="0">
+            <label for="numDrink">Cantidad de gente que solo bebe:</label>
+            <input type="number" id="numDrink" placeholder="Ingrese la cantidad">
         </div>
         <button onclick="calculate()">Calcular</button>
-        <div id="result"></div>
+        <div class="result">
+            <p id="resultText"></p>
+        </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
