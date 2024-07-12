@@ -16,7 +16,7 @@ function calculate() {
     }
 
     document.getElementById('resultText').innerText = 
-        `Costo por persona que come y bebe alcohol: $${totalEatDrink.toFixed(2)}\n` +
-        `Costo por persona que solo come: $${totalEat.toFixed(2)}\n` +
-        `Costo por persona que solo bebe: $${totalDrink.toFixed(2)}`;
+        Costo por persona que come y bebe alcohol: $${totalEatDrink.toFixed(2)}\n +
+        Costo por persona que solo come: $${totalEat.toFixed(2)}\n +
+        Costo por persona que solo bebe: $${totalDrink.toFixed(2)};
 }
